@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>list of openings</title>
+    <!--<link rel="stylesheet" href="../static/style.css"> -->
+</head>
+<body>
+    <h2>These are the list of openings</h2>
+    <ul>
+        {% for f in openings%}
+        <li>{{ f }}</li>
+        {% endfor %}
+    </ul>
+    
+</body>
+</html>

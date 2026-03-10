@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Schools available</title>
+    <!--<link rel="stylesheet" href="../static/style.css"> -->
+</head>
+<body>
+    <h2>These are the list of available schools</h2>
+    <h2>Below is the school total fees: {{highestfee}}</h2>
+    <ul>
+        {% for job in schools %}
+        <li>{{ job }}</li>
+        {% endfor %}
+    </ul>
+    
+</body>
+</html>

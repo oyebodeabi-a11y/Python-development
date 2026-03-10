@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Utencils shops</title>
+    <!--<link rel="stylesheet" href="../static/style.css"> -->
+</head>
+<body>
+    <h3>These are the list of available utencils</h3>
+    <h4>Below is the utencils fees: {{total}}</h4>
+    <ul>
+        {% for u in items %}
+        <li>{{ u }}</li>
+        {% endfor %}
+    </ul>
+    
+</body>
+</html>

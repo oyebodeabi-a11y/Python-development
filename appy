@@ -1,0 +1,85 @@
+from flask import Flask, render_template
+
+app = Flask(__name__)
+def add():
+    a = 90
+    b = 60
+    c = a+b
+    return c
+
+def calculate_total():
+    gas_cooker= 2*50000
+    cooking_spoons=24*300
+    plates=24*1000
+    crate=3*500
+    eggs=36*250
+    total=gas_cooker+cooking_spoons+plates+crate+eggs
+    return total
+
+def highest_school_fee():
+    British_college=1200000
+    Topfaith_International_school=950000
+    Royal_Crown_Academy=700000
+    St_Theresa_college=500000
+    highest_fee=max(British_college,Topfaith_International_school,
+                    Royal_Crown_Academy,St_Theresa_college)
+    return highest_fee
+    
+@app.route('/')
+def home():
+    return "<h2>Welcome to my homepage</h2>"        
+
+@app.route('/utensils')
+def utensils():
+    items = [
+            "gas_cooker=100000",
+            "cooking_spoons=7200",
+            "plates=24000",
+            "crates=1500"
+            "eggs=9000"
+        ]
+    total=calculate_total()
+    return render_template("utensils.html", total=total, items=items)
+    
+@app.route('/schools')
+def schools():
+    schools = [
+            "British_college=1200000",
+            "Topfaith_International_school=950000",
+            "Royal_Crown_Academy=700000",
+            "St_Theresa_college=500000"
+        ]
+    
+    highestfee=highest_school_fee()
+    return render_template("schools.html",schools=schools, highestfee=highestfee) 
+
+@app.route('/fruits')
+def fruits():
+    fruit_lists={"Apple", "Banana", "Orange", 
+                 "pineapple", "mango"}
+    return render_template("fruits.html", fruits=fruit_lists)
+
+@app.route('/towns')
+def towns():
+    town_list={"Lagos", "Abuja", "Calabar", 
+               "Uyo", "Enugu", "Ibadan"}
+    return render_template("towns.html", towns=town_list)
+
+@app.route('/openings')
+def openings():
+    openings = ["Receptionist","Managers", "Help desk", "Engineers", "Technicians", "Developers", "Doctors"]
+    return render_template("vacant.html", openings=openings)
+ 
+@app.route('/task')
+def index():
+   jobsavailable=True
+   if jobsavailable:
+      tasks = ["cleaning","gathening", "client support", "data manipulations", "cloud support", "marketing", "fumigation"]
+      result=add()
+      return render_template("tasks.html", tasks=tasks,score=result,jobsavailable=jobsavailable)
+   else:
+      return render_template("nojobs.html")
+
+
+if __name__ == '__main__':
+   app.run(host='127.0.0.1', port=3005, debug =True)
